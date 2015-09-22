@@ -16,6 +16,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 " Airline
 Plugin 'bling/vim-airline'
+" Bufferline
+" Plugin 'bling/vim-bufferline'
 " YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 " ListToggle
@@ -64,7 +66,6 @@ colorscheme molokai
 set omnifunc=syntaxcomplete#Complete
 set number  
 set numberwidth=5
-set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set noexpandtab
@@ -90,11 +91,10 @@ set showtabline=0
 
 
 " speed up syntax highlighting
-" set nocursorcolumn
-" set nocursorline
-" syntax sync minlines=256
-" autocmd BufEnter * :syntax sync fromstart
-" set synmaxcol=128
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+set synmaxcol=128
 set re=1
 " Fermer automatiquement la fenetre d'omnicompletion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
