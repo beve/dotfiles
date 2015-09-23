@@ -62,9 +62,12 @@ let g:netrw_liststyle=3
 syntax on
 set background=dark
 let g:rehash256 = 1
+let g:molokai_original = 0
+set t_Co=256
 colorscheme molokai
-hi Comment ctermfg=Blue ctermbg=Black
-hi LineNr ctermbg=black ctermfg=Gray
+hi Normal ctermbg=0
+hi Comment ctermbg=233 ctermfg=Blue
+hi LineNr ctermbg=Black ctermfg=237
 set omnifunc=syntaxcomplete#Complete
 set number  
 set numberwidth=5
@@ -72,7 +75,6 @@ set softtabstop=2
 set shiftwidth=2
 set noexpandtab
 set mouse=a
-set t_Co=256
 set foldmethod=manual
 set laststatus=2
 set backspace=indent,eol,start
