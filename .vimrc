@@ -65,9 +65,9 @@ let g:rehash256 = 1
 let g:molokai_original = 0
 set t_Co=256
 colorscheme molokai
-hi Normal ctermbg=0
+" hi Normal ctermbg=Black
 hi Comment ctermbg=233 ctermfg=Blue
-hi LineNr ctermbg=Black ctermfg=237
+hi LineNr ctermbg=233 ctermfg=240
 set omnifunc=syntaxcomplete#Complete
 set number  
 set numberwidth=5
