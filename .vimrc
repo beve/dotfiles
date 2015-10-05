@@ -73,8 +73,9 @@ hi LineNr ctermbg=233 ctermfg=240
 set omnifunc=syntaxcomplete#Complete
 set number  
 set numberwidth=5
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set noexpandtab
 set mouse=a
 set foldmethod=manual
@@ -198,19 +199,21 @@ let g:ycm_auto_trigger = 1
 " Go
 " -----------------------------------------------
 let g:go_disable_autoinstall = 0  
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_autosave = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 " On desactive syntastic pour les fichiers go
 let g:loaded_syntastic_go_go_checker = 1
 let g:go_auto_type_info = 1
-let g:go_fmt_experimental = 1
 let g:go_doc_keywordprg_enabled = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_space_tab_error = 1
-let g:go_fmt_command = "gofmt -tabs=false"
+let g:go_fmt_experimental = 0
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = 'gofmt'
+" autocmd FileType go setlocal shiftwidth=8 tabstop=8 softtabstop=8     " set tab stops to 8 for Go files
+" autocmd FileType go setlocal noexpandtab                              " don't expand tabs to spaces for Go files
 
 " -----------------------------------------------
 " Toogle
