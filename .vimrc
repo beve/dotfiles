@@ -47,6 +47,8 @@ Plugin 'mbbill/undotree'
 Plugin 'valloric/MatchTagAlways'
 " UltiSnitps
 Plugin 'SirVer/ultisnips'
+" Minimap
+Plugin 'mipmip/vim-minimap'
 
 " -----------------------------------------------
 " vundle
@@ -166,7 +168,6 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " ------------------------------------------------
-
 " The Silver Searcher
 " -----------------------------------------------
 if executable('ag')
@@ -204,12 +205,12 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 " On desactive syntastic pour les fichiers go
 let g:loaded_syntastic_go_go_checker = 1
-let g:go_fmt_command = "gofmt"
 let g:go_auto_type_info = 1
-let g:go_fmt_experimental = 0
+let g:go_fmt_experimental = 1
 let g:go_doc_keywordprg_enabled = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_space_tab_error = 1
+let g:go_fmt_command = "gofmt -tabs=false"
 
 " -----------------------------------------------
 " Toogle
