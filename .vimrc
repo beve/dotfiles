@@ -3,63 +3,122 @@
 " Installer les plugins en lancant vim puis :PluginInstall
 " cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer --system-libclang --system-boost
 " Pour Go: :GoInstallBinaries
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Pour vimproc: cd  ~/.vim/bundle/vimproc.vim && /usr/bin/make -f make_unix.mak
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+
+" neobundle
+
+" Note: Skip initialization for vim-tiny or vim-small.
+ if 0 | endif
+
+ if has('vim_starting')
+   if &compatible
+     set nocompatible               " Be iMproved
+   endif
+
+   " Required:
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
+
+ " Required:
+ call neobundle#begin(expand('~/.vim/bundle/'))
+
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+" plugin Git
+NeoBundle 'tpope/vim-fugitive'
+" ctrlP
+" NeoBundle 'kien/ctrlp.vim'
+" ctrlP funky
+" NeoBundle 'tacahiroy/ctrlp-funky'
+" Airline
+NeoBundle 'bling/vim-airline'
+" YouCompleteMe
+NeoBundle 'Valloric/YouCompleteMe'
+" ListToggle
+NeoBundle 'Valloric/ListToggle'
+" delimitmate
+NeoBundle 'Raimondi/delimitMate'
+" NERDtree
+NeoBundle 'scrooloose/nerdtree'
+" Syntastic
+NeoBundle 'scrooloose/syntastic'
+" Tagbar
+NeoBundle 'majutsushi/tagbar'
+" Sessions
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-session'
+" HTML
+NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+NeoBundle 'othree/html5.vim'
+" SCSS
+NeoBundle 'cakebaker/scss-syntax.vim'
+" Syntax hightlight for javascript libs 
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+" Angular
+NeoBundle 'burnettk/vim-angular'
+" Silver searcher
+NeoBundle 'rking/ag.vim'
+" vim-go
+NeoBundle 'fatih/vim-go'
+" undotree
+NeoBundle 'mbbill/undotree'
+" MatchTagAlways
+NeoBundle 'valloric/MatchTagAlways'
+" UltiSnitps
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+" Minimap
+NeoBundle 'mipmip/vim-minimap'
+" bclose
+NeoBundle 'rbgrouleff/bclose.vim'
+" gitgutter
+NeoBundle 'airblade/vim-gitgutter'
+" Nerdcommenter
+NeoBundle 'scrooloose/nerdcommenter'
+" TernJS
+NeoBundle 'ternjs/tern_for_vim'
+" Colorizer
+NeoBundle 'vim-scripts/colorizer'
+" Multiple cursors
+" NeoBundle 'terryma/vim-multiple-cursors'
+" Unite
+NeoBundle 'Shougo/vimproc', { 'build' : { 'unix' : 'make -f make_unix.mak'}}
+NeoBundle 'Shougo/unite.vim'
+" NeoBundle 'Shougo/neomru.vim'
+" SuperTab
+NeoBundle 'ervandew/supertab'
+" vim-autoformat
+NeoBundle 'maksimr/vim-jsbeautify'
+" easy-align
+NeoBundle 'junegunn/vim-easy-align'
+" vim-yankstack
+NeoBundle 'maxbrunsfeld/vim-yankstack'
+
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
 
 " Vundle 
-Plugin 'gmarik/Vundle.vim'
-" plugin Git
-Plugin 'tpope/vim-fugitive'
-" ctrlP
-Plugin 'kien/ctrlp.vim'
-" ctrlP funky
-Plugin 'tacahiroy/ctrlp-funky'
-" Airline
-Plugin 'bling/vim-airline'
-" YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-" ListToggle
-Plugin 'Valloric/ListToggle'
-" delimate
-Plugin 'Raimondi/delimitMate'
-" NERDtree
-Plugin 'scrooloose/nerdtree'
-" Syntastic
-Plugin 'scrooloose/syntastic'
-" Tagbar
-Plugin 'majutsushi/tagbar'
-" Sessions
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
-" HTML format
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Syntax hightlight for javascript libs 
-Plugin 'othree/javascript-libraries-syntax.vim'
-" Angular
-Plugin 'burnettk/vim-angular'
-" Silver searcher
-Plugin 'rking/ag.vim'
-" vim-go
-Plugin 'fatih/vim-go'
-" undotree
-Plugin 'mbbill/undotree'
-" MatchTagAlways
-Plugin 'valloric/MatchTagAlways'
-" UltiSnitps
-Plugin 'SirVer/ultisnips'
-" Minimap
-Plugin 'mipmip/vim-minimap'
+" Plugin 'gmarik/Vundle.vim'
 
 " -----------------------------------------------
 " vundle
 " -----------------------------------------------
-call vundle#end()            " required
+" call vundle#end()            " required
 
 " -----------------------------------------------
 " general
 " -----------------------------------------------
-filetype plugin indent on    " required
-filetype plugin on
+inoremap jj <Esc>
 let g:netrw_liststyle=3
 syntax on
 set background=dark
@@ -95,7 +154,8 @@ set undofile
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Disable tabline
 set showtabline=0
-
+" Add ; at end of line
+inoremap ;; <C-o>A;
 
 " speed up syntax highlighting
 " set nocursorcolumn
@@ -147,26 +207,27 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " let b:syntastic_mode = 'passive'
+let g:syntastic_javascript_checkers = ['jshint']
 
 " -----------------------------------------------
 " ctrlp
 " -----------------------------------------------
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_max_height = 50
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<c-p>p'
-let g:ctrlp_working_path_mode = 'ra'
-nmap <c-p>b :CtrlPBuffer <cr>
-nmap <c-p>d :CtrlPDir <cr>
-nmap <c-p>m :CtrlPMRUFiles <cr>
-nmap <c-p>f :CtrlPFunky <cr>
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_max_height = 50
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_map = '<c-p>p'
+"let g:ctrlp_working_path_mode = 'ra'
+"nmap <c-p>b :CtrlPBuffer <cr>
+"nmap <c-p>d :CtrlPDir <cr>
+"nmap <c-p>m :CtrlPMRUFiles <cr>
+"nmap <c-p>f :CtrlPFunky <cr>
 
 " -----------------------------------------------
 " ctrlp funky
 " -----------------------------------------------
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+"nnoremap <Leader>fu :CtrlPFunky<Cr>
+"" narrow the list down with a word under cursor
+"nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " ------------------------------------------------
 " The Silver Searcher
@@ -181,7 +242,7 @@ endif
 " -----------------------------------------------
 " session
 " -----------------------------------------------
-" let g:session_autoload = 'yes'
+:let g:session_autoload = 'no'
 " let g:session_autosave = 'yes'
 
 " -----------------------------------------------
@@ -252,9 +313,89 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
     \ }
 
-nmap <F8> :TagbarToggle<CR>
+nmap <F5> :TagbarToggle<CR>
+
+" -----------------------------------------------
+" gitgutter
+" -----------------------------------------------
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " -----------------------------------------------
 " undotree
 " -----------------------------------------------
-nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <F8> :UndotreeToggle<cr>
+
+" -----------------------------------------------
+" delimitmate
+" -----------------------------------------------
+
+let delimitMate_expand_cr=1
+
+" -----------------------------------------------
+" Unite
+" -----------------------------------------------
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+let g:unite_data_directory='~/.vim/.cache/unite'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_prompt='» '
+let g:unite_split_rule = 'botright'
+call unite#custom#profile('default', 'context', {
+			\ 'start_insert': 1,
+			\'winheight': 10,
+			\ 'direction': 'botright',
+			\ })
+" let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+let dot = '\%(^\|/\)\.'
+let dirs = '\%(^\|/\)\%(' . join(['node_modules', 'bower_components', 'dist'], '\|') . '\)\%($\|/\)'
+let files = join(['\.pyc\%($\)'], '\|')
+let pattern = join([dot, dirs, files], '\|')
+call unite#custom#source('file_rec/async', 'ignore_pattern', pattern)
+call unite#custom#profile('default', 'context', {'start_insert': 1})
+nnoremap <silent> <c-p>p :Unite -auto-resize -buffer-name=files_buffer buffer file_rec/async:!<cr>
+nnoremap <silent> <c-p>v :Unite -auto-resize -default-action=vsplit -buffer-name=files_buffer buffer file_rec/async:!<cr>
+nnoremap <silent> <c-p>b :Unite -auto-resize buffer<cr>
+nnoremap <silent> <c-p>l :Unite line -no-split<cr>
+nnoremap <silent> <c-p>g :Unite grep<cr>
+nnoremap <silent> <c-p>u :Unite ultisnips<cr>
+nnoremap <silent> <c-p>f :Unite function<cr>
+
+" -----------------------------------------------
+" UltiSnips
+" -----------------------------------------------
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsExpandTrigger="<nop>"
+let g:ulti_expand_or_jump_res = 0
+function! <SID>ExpandSnippetOrReturn()
+  let snippet = UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res > 0
+    return snippet
+  else
+    return "\<C-Y>"
+  endif
+endfunction
+imap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "<Plug>delimitMateCR"
+
+" -----------------------------------------------
+" js-beautify 
+" -----------------------------------------------
+autocmd FileType javascript noremap <buffer><Enter><Enter> :call JsBeautify()<cr>
+autocmd FileType json noremap <buffer><Enter><Enter> :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <Enter><Enter> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <Enter><Enter> :call CSSBeautify()<cr>
+
+" -----------------------------------------------
+" SCSS
+" -----------------------------------------------
+au BufRead,BufNewFile *.scss set filetype=scss.css
+au BufRead,BufNewFile *.less set filetype=scss.css
+autocmd FileType scss set iskeyword+=-
+
+" -----------------------------------------------
+" Easy align
+" -----------------------------------------------
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
