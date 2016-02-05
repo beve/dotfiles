@@ -1,0 +1,34 @@
+"*":
+  "atom-autocomplete-php":
+    binComposer: "/usr/bin/composer"
+  "atom-beautify":
+    _analyticsUserId: "74370c8e-385a-4f54-80a0-865f24edb4c6"
+  "block-cursor":
+    global:
+      blinkOn:
+        backgroundColor:
+          red: 255
+          green: 0
+          blue: 95
+          alpha: 1
+        borderStyle: "bordered-box"
+        borderWidth: 4
+  core:
+    autoHideMenuBar: true
+    themes: [
+      "atom-light-ui"
+      "monokai"
+    ]
+  editor:
+    invisibles: {}
+  "exception-reporting":
+    userId: "27d6d73f-c207-8439-9bdf-18323c5eab0c"
+  linter: {}
+  tabs:
+    enableVcsColoring: true
+    usePreviewTabs: true
+  "tree-view-open-files": {}
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
+  welcome:
+    showOnStartup: false

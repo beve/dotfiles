@@ -1,0 +1,4 @@
+'.platform-win32, .platform-linux':
+  'ctrl-n': 'tree-view:toggle',
+  'ctrl-w': '',
+  'ctrl-i': 'atom-beautify:beautify-editor',

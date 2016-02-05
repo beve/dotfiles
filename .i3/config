@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -42,29 +42,17 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
 # split in horizontal orientation
-bindsym $mod+Control+h split h
+bindsym $mod+Shift+Control+h split h
 
 # split in vertical orientation
-bindsym $mod+Control+v split v
+bindsym $mod+Shift+Control+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+Control+m fullscreen
@@ -88,20 +76,20 @@ bindsym $mod+Control+d focus child
 
 # next and prev workspace
 
-bindsym $mod+Control+j workspace prev
-bindsym $mod+Control+k workspace next
+bindsym $mod+Control+h workspace prev
+bindsym $mod+Control+l workspace next
 
 # switch to workspace
-bindsym $mod+F1 workspace 1
-bindsym $mod+F2 workspace 2
-bindsym $mod+F3 workspace 3
-bindsym $mod+F4 workspace 4
-bindsym $mod+F5 workspace 5
-bindsym $mod+F6 workspace 6
-bindsym $mod+F7 workspace 7
-bindsym $mod+F8 workspace 8
-bindsym $mod+F9 workspace 9
-bindsym $mod+F10 workspace 10
+bindsym F1 workspace 1
+bindsym F2 workspace 2
+bindsym F3 workspace 3
+bindsym F4 workspace 4
+bindsym F5 workspace 5
+bindsym F6 workspace 6
+bindsym F7 workspace 7
+bindsym F8 workspace 8
+bindsym F9 workspace 9
+bindsym F10 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+F1 move container to workspace 1
@@ -152,9 +140,10 @@ bindsym $mod+Shift+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
+    position top
     mode hide
     hidden_state hide
-    modifier Mod1
+    modifier Mod4
 }
 
 bindsym $mod+Control+y exec i3-input -F 'rename workspace to %s' -P 'New name: '
