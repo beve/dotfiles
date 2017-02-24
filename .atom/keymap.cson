@@ -1,4 +1,56 @@
-'.platform-win32, .platform-linux':
-  'ctrl-n': 'tree-view:toggle',
-  'ctrl-w': '',
-  'ctrl-i': 'atom-beautify:beautify-editor',
+'.platform-linux':
+    'ctrl-h': 'unset!'
+    'ctrl-j': 'unset!'
+    'ctrl-k': 'unset!'
+    'ctrl-l': 'unset!'
+    'ctrl-n': 'tree-view:toggle'
+    'ctrl-w': 'unset!'
+
+'atom-text-editor:not([mini])':
+    'ctrl-shift-e': 'emmet:expand-abbreviation'
+
+'.platform-linux atom-text-editor.vim-mode-plus:not(.insert-mode)':
+    'alt-p': 'clipboard-plus:toggle'
+
+"atom-workspace":
+    "alt-[": "unset!"
+    "alt-[ ^alt": "unset!"
+    "alt-]": "unset!"
+    "alt-] ^alt": "unset"
+
+"ol.tab-switcher-tab-list":
+    "tab": "tab-switcher:select"
+    "enter": "tab-switcher:select"
+    "escape": "tab-switcher:cancel"
+    "k": "tab-switcher:previous"
+    "j": "tab-switcher:next"
+    "w": "tab-switcher:close"
+    "s": "tab-switcher:save"
+
+'.select-list.fuzzy-finder .editor':
+    'ctrl-j': 'core:move-down'
+    'ctrl-k': 'core:move-up'
+
+'.preview-pane.pane-item':
+    'ctrl-j': 'core:move-down'
+    'ctrl-k': 'core:move-up'
+
+'body atom-text-editor.autocomplete-active':
+    'ctrl-k': 'autocomplete-plus:move-up'
+    'ctrl-j': 'autocomplete-plus:move-down'
+    'pageup': 'autocomplete-plus:page-up'
+    'pagedown': 'autocomplete-plus:page-down'
+    'home': 'autocomplete-plus:move-to-top'
+    'end': 'autocomplete-plus:move-to-bottom'
+
+'atom-text-editor.vim-mode-plus.normal-mode:not(.jumpy-jump-mode)':
+    'f': 'jumpy:toggle'
+    'tab': "tab-switcher:next"
+    ']': 'atom-beautify:beautify-editor'
+    'ctrl-w': 'core:close'
+    'ctrl-c': 'core:copy'
+    'ctrl-v': 'core:paste'
+
+'atom-text-editor.vim-mode-plus.normal-mode':
+  ':': 'vim-mode-plus-ex-mode:open'
+  '!': 'vim-mode-plus-ex-mode:toggle-setting'
